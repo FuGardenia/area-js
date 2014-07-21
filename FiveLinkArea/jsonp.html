@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国</title>
+<script src="jquery-1.3.2.min.js"></script>
+<script src="five-area-url.js"></script>
+</head>
+<body>
+
+<label for="address">地址:</label>
+            <select class="form-control select" id="s_province" name="province" onchange="changeData('cityCallback','s_province')">
+            	<option id='s_province' value='0'>省份</option>
+            </select>
+            <select class="form-control select" id="s_city" name="city" onchange="changeData('countyCallback','s_city')">
+            	<option id='s_city' value='0'>地级市</option>
+            </select>
+            <select class="form-control select" id="s_county" name="county" onchange="changeData('townCallback','s_county')">
+            	<option id='s_county' value='0'>市/县级市</option>
+            </select>
+            <select class="form-control select" id="s_town" name="city" onchange="changeData('villageCallback','s_town')">
+            	<option id='s_town' value='0'>乡镇</option>
+            </select>
+            <select class="form-control select" id="s_village" name="county">
+            	<option id='s_village' value='0'>村部</option>
+            </select>
+            <script type="text/javascript">_init()</script>
+
+</body>
+</html>
