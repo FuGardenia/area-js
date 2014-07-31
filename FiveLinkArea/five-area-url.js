@@ -1,40 +1,41 @@
-/*
+
 *	全国五级城市乡村联动 js版
 *	author:		FuYin
 *   download:   http://pan.baidu.com/share/home?uk=370326476&view=share#category/type=0
 *	homepage:	http://weibo.com/fugardenia
 *	E-mail:		fooying#qq.com
-*	version:	1.0.0
+*	version:	1.0.2
 *	data:		http://api.dangqian.com/apidiqu2/api.asp?format=json
+*obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
 **/
 function provinceCallback(result) {
 	    var obj=$("#s_province");
 	    for(var i in result['list']){
-	    	obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
+	    	obj.append("<option id='"+result['list'][i]['daima']+"' value='"+result['list'][i]['diming']+"'>"+result['list'][i]['diming']+"</option>");
 	    }
 }
 function cityCallback(result) {
 	    var obj=$("#s_city");
 	    for(var i in result['list']){
-	    	obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
+	    	obj.append("<option id='"+result['list'][i]['daima']+"' value='"+result['list'][i]['diming']+"'>"+result['list'][i]['diming']+"</option>");
 	    }
 }
 function countyCallback(result) {
 	    var obj=$("#s_county");
 	    for(var i in result['list']){
-	    	obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
+	    	obj.append("<option id='"+result['list'][i]['daima']+"' value='"+result['list'][i]['diming']+"'>"+result['list'][i]['diming']+"</option>");
 	    }
 }
 function townCallback(result) {
 	    var obj=$("#s_town");
 	    for(var i in result['list']){
-	    	obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
+	    	obj.append("<option id='"+result['list'][i]['daima']+"' value='"+result['list'][i]['diming']+"'>"+result['list'][i]['diming']+"</option>");
 	    }
 }
 function villageCallback(result) {
 	    var obj=$("#s_village");
 	    for(var i in result['list']){
-	    	obj.append("<option value='"+result['list'][i]['daima']+"'>"+result['list'][i]['diming']+"</option>");
+	    	obj.append("<option id='"+result['list'][i]['daima']+"' value='"+result['list'][i]['diming']+"'>"+result['list'][i]['diming']+"</option>");
 	    }
 }
 
@@ -52,6 +53,12 @@ function _init(){
 
 function changeData(callBack,areaId){
 	var val = $("#"+areaId).val();
+
+	var Id = 0;
+	if(!(val == 0)){
+		Id = $("#"+areaId+" option:selected").attr('id');
+		//alert(Id);
+	}
 	switch(areaId)
 	{
 	case "s_province":
@@ -78,7 +85,7 @@ function changeData(callBack,areaId){
 	  $("#s_town option[value!=0]").remove();
 	  $("#s_village option[value!=0]").remove();
 	}
-	getDataById(callBack,val);
+	getDataById(callBack,Id);
 }
 
 /*
@@ -101,4 +108,3 @@ function changeData(callBack,areaId){
             <script type="text/javascript">_init()</script>
 
 
-*/
